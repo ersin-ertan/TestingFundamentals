@@ -1,6 +1,7 @@
 package com.nullcognition.testingfundamentals;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,12 +31,24 @@ public class ActivityMain extends Activity {
 	  setContentView(R.layout.activity_main);
    }
 
+   public static Intent startNewActivityI(Context con, String query){
+
+	  String val = "someVal";
+	  if(query != null){ val = query;}
+
+	  Intent activitySecond = new Intent(con, ActivitySecond.class);
+	  activitySecond.putExtra(ACTIVITY_MAIN_KEY, query);
+
+	  return activitySecond;
+   }
 
    @OnClick(R.id.button)
    public void startNewActivity(){
 
+	  String val = "someVal";
+
 	  Intent activitySecond = new Intent(this, ActivitySecond.class);
-	  activitySecond.putExtra(ACTIVITY_MAIN_KEY, "someVal");
+	  activitySecond.putExtra(ACTIVITY_MAIN_KEY, val);
 	  startActivity(activitySecond);
    }
 
